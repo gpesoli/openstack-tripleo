@@ -1,0 +1,37 @@
+resource_registry:
+  OS::TripleO::Compute::Net::SoftwareConfig:
+    ../network/config/single-nic-vlans/compute.yaml
+  OS::TripleO::Controller::Net::SoftwareConfig:
+    ../network/config/single-nic-vlans/controller.yaml
+  OS::TripleO::CephStorage::Net::SoftwareConfig:
+    ../network/config/single-nic-vlans/ceph-storage.yaml
+
+parameter_defaults:
+
+  ControlPlaneSubnetCidr: '24'
+  ControlPlaneDefaultRoute: 172.16.1.1
+  EC2MetadataIp: 172.16.1.5
+  InternalApiNetCidr: 10.90.57.0/24
+  StorageNetCidr: 172.16.4.0/24
+  StorageMgmtNetCidr: 172.16.2.0/24
+  TenantNetCidr: 172.16.3.0/24
+  ExternalNetCidr: 10.90.60.0/23
+  ManagementNetCidr: 10.90.56.0/24
+  InternalApiNetworkVlanID: 967
+  StorageNetworkVlanID: 14
+  StorageMgmtNetworkVlanID: 12
+  TenantNetworkVlanID: 13
+  ExternalNetworkVlanID: 969
+  ManagementNetworkVlanID: 966
+  InternalApiAllocationPools: [{'start': '10.90.57.20', 'end': '10.90.57.100'}]
+  StorageAllocationPools: [{'start': '172.16.4.20', 'end': '172.16.4.100'}]
+  StorageMgmtAllocationPools: [{'start': '172.16.2.20', 'end': '172.16.2.100'}]
+  TenantAllocationPools: [{'start': '172.16.3.20', 'end': '172.16.3.100'}]
+  ExternalAllocationPools: [{'start': '10.90.60.20', 'end': '10.90.60.100'}]
+  ManagementAllocationPools: [{'start': '10.90.56.20', 'end': '10.90.56.100'}]
+  ExternalInterfaceDefaultRoute: 10.90.60.1
+  ManagementInterfaceDefaultRoute: 10.90.56.1
+  DnsServers: ["10.80.83.40"]
+  NtpServer: ["10.40.3.14"]
+  NeutronBridgeMappings: "datacentre:br-trunk"
+  TimeZone: "CET"
